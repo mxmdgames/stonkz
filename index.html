@@ -22,74 +22,29 @@
             height: 100%;
             z-index: -1;
         }
-        .panel {
+        .matrix {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            font-size: 10px;
+            line-height: 10px;
+            pointer-events: none;
         }
-        .volume-bar {
-            width: 5px;
-            background-color: #ff5f5f;
-            border-radius: 5px 5px 0 0;
-            animation: volumeAnimation 1s infinite alternate;
+        .matrix__ticker {
+            position: absolute;
+            left: 0;
+            color: #33ff00;
+            opacity: 0.5;
+            animation: tickerAnimation 30s linear infinite;
         }
-        @keyframes volumeAnimation {
+        @keyframes tickerAnimation {
             0% {
-                height: 0%;
+                transform: translateY(-100%);
             }
             100% {
-                height: 100%;
-            }
-        }
-        .candle {
-            width: 20px;
-            background-color: #4CAF50;
-            animation: candleAnimation 1s infinite alternate;
-        }
-        @keyframes candleAnimation {
-            0% {
-                height: 0%;
-            }
-            100% {
-                height: 50%;
-            }
-        }
-        .line-chart {
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to top, #00FF00 0%, #00FF00 50%, #FF0000 50%, #FF0000 100%);
-            background-size: 100% 200%;
-            animation: lineChartAnimation 4s infinite;
-        }
-        @keyframes lineChartAnimation {
-            0% {
-                background-position-y: 100%;
-            }
-            100% {
-                background-position-y: 0%;
-            }
-        }
-        .arrow {
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 10px solid #fff;
-            animation: arrowAnimation 2s infinite;
-        }
-        @keyframes arrowAnimation {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                opacity: 0;
+                transform: translateY(100vh);
             }
         }
         .container {
@@ -127,21 +82,12 @@
 </head>
 <body>
     <div class="background">
-        <div class="panel">
-            <div class="volume-bar"></div>
-            <div class="volume-bar"></div>
-            <div class="volume-bar"></div>
-            <div class="volume-bar"></div>
-            <div class="volume-bar"></div>
-            
-            <div class="candle"></div>
-            <div class="candle"></div>
-            <div class="candle"></div>
-            <div class="candle"></div>
-            <div class="candle"></div>
-
-            <div class="line-chart"></div>
-            <div class="arrow"></div>
+        <div class="matrix">
+            <div class="matrix__ticker">AAPL</div>
+            <div class="matrix__ticker">GOOGL</div>
+            <div class="matrix__ticker">MSFT</div>
+            <div class="matrix__ticker">AMZN</div>
+            <!-- Add more tickers as needed -->
         </div>
     </div>
     <div class="container">
