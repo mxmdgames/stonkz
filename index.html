@@ -24,20 +24,32 @@
         .volume-bar {
             position: absolute;
             bottom: 0;
-            width: 10px;
+            width: 5px;
             background-color: #ff5f5f;
             border-radius: 5px 5px 0 0;
-            animation: volumeAnimation 2s infinite;
+            animation: volumeAnimation 1s infinite alternate;
         }
         @keyframes volumeAnimation {
             0% {
-                height: 0;
-            }
-            50% {
-                height: 50%;
+                height: 0%;
             }
             100% {
-                height: 0;
+                height: 100%;
+            }
+        }
+        .candle {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background-color: #4CAF50;
+            animation: candleAnimation 1s infinite alternate;
+        }
+        @keyframes candleAnimation {
+            0% {
+                height: 0%;
+            }
+            100% {
+                height: 50%;
             }
         }
         .line-chart {
@@ -56,6 +68,32 @@
             }
             100% {
                 background-position-y: 0%;
+            }
+        }
+        .arrow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid #fff;
+            animation: arrowAnimation 2s infinite;
+        }
+        @keyframes arrowAnimation {
+            0% {
+                bottom: 0;
+                opacity: 1;
+            }
+            50% {
+                bottom: 50%;
+                opacity: 0.5;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
             }
         }
         .container {
@@ -93,11 +131,23 @@
 </head>
 <body>
     <div class="background">
-        <div class="volume-bar"></div>
+        <div class="volume-bar" style="left: 10%;"></div>
+        <div class="volume-bar" style="left: 30%;"></div>
+        <div class="volume-bar" style="left: 50%;"></div>
+        <div class="volume-bar" style="left: 70%;"></div>
+        <div class="volume-bar" style="left: 90%;"></div>
+        
+        <div class="candle" style="left: 15%;"></div>
+        <div class="candle" style="left: 35%;"></div>
+        <div class="candle" style="left: 55%;"></div>
+        <div class="candle" style="left: 75%;"></div>
+        <div class="candle" style="left: 95%;"></div>
+
         <div class="line-chart"></div>
+        <div class="arrow"></div>
     </div>
     <div class="container">
-        <div class="title">TO THE MOON</div>
+        <div class="title">Welcome to Cutting Edge Web Page</div>
         <button class="btn" onclick="openStreamlitApp()"><i class="fas fa-chart-line"></i> Go to Stock Charting App</button>
     </div>
 
