@@ -80,6 +80,16 @@
     </style>
 </head>
 <body>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
     <script>
         function fetchStockData(symbol, element) {
             fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`)
@@ -94,7 +104,7 @@
         }
 
         function updateStockPrices() {
-            const symbols = ['aapl', 'googl', 'msft', 'amzn', 'tsla', 'fb', 'nvda', 'nflx', 'btc-usd', 'eth-usd'];
+            const symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'FB', 'NVDA', 'NFLX', 'BTC-USD', 'ETH-USD'];
             const streams = document.querySelectorAll('.stream');
 
             symbols.forEach((symbol, index) => {
@@ -105,15 +115,5 @@
         updateStockPrices();
         setInterval(updateStockPrices, 5000); // Update every 5 seconds
     </script>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
-    <div class="stream"></div>
 </body>
 </html>
