@@ -3,61 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stock Charting App</title>
+<title>Matrix ASCII Art Stock Ticker</title>
 <style>
+  @keyframes matrixRain {
+    0% { color: #0f0; opacity: 1; }
+    100% { color: #0f0; opacity: 0; }
+  }
   body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #1a2a6c; /* Dark blue background */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
+    background-color: black;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    color: #0f0;
   }
-  .button {
-    padding: 15px 30px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #ff4b1f; /* Gradient color start */
-    background-image: linear-gradient(62deg, #ff4b1f 0%, #ff9068 100%);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s ease-in-out;
-  }
-  .button:hover {
-    transform: scale(1.05);
-  }
-  .button:focus,
-  .button:active {
-    outline: none;
-  }
-  .content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+  .matrix-rain {
+    font-size: 16px;
+    line-height: 16px;
+    position: absolute;
+    top: -100%;
+    animation: matrixRain 2s infinite linear;
   }
 </style>
 </head>
 <body>
 
-<div class="content">
-  <h1>Welcome to Stock Visionary</h1>
-  <p>Real-time insights into the stock market at your fingertips.</p>
-  <a href="https://stonkape.streamlit.app/" class="button">Access Chart</a>
+<div class="matrix-rain">
+  GME $250.00<br>
+  $TSLA $650.00<br>
+  Roaring Kitty<br>
+  DeepFuckingValue<br>
+  // Add more stock tickers here
 </div>
+
+<script>
+  // JavaScript to randomly position and animate the ASCII art
+  const rain = document.querySelector('.matrix-rain');
+  function animateRain() {
+    rain.style.left = Math.random() * window.innerWidth + 'px';
+    rain.style.top = -Math.random() * 500 + 'px';
+  }
+  setInterval(animateRain, 2000);
+</script>
 
 </body>
 </html>
