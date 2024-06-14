@@ -21,79 +21,46 @@
             z-index: -1;
             background-color: #1e1e1e;
         }
-        .volume-bar {
-            position: absolute;
-            bottom: 0;
-            width: 5px;
-            background-color: #ff5f5f;
-            border-radius: 5px 5px 0 0;
-            animation: volumeAnimation 1s infinite alternate;
-        }
-        @keyframes volumeAnimation {
-            0% {
-                height: 0%;
-            }
-            100% {
-                height: 100%;
-            }
-        }
         .candle {
             position: absolute;
             bottom: 0;
             width: 20px;
-            background-color: #4CAF50;
-            animation: candleAnimation 1s infinite alternate;
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            animation: candleAnimation 3s infinite;
         }
         @keyframes candleAnimation {
             0% {
-                height: 0%;
+                height: 0;
+            }
+            50% {
+                height: 80%;
             }
             100% {
-                height: 50%;
-            }
-        }
-        .line-chart {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to top, #00FF00 0%, #00FF00 50%, #FF0000 50%, #FF0000 100%);
-            background-size: 100% 200%;
-            animation: lineChartAnimation 4s infinite;
-        }
-        @keyframes lineChartAnimation {
-            0% {
-                background-position-y: 100%;
-            }
-            100% {
-                background-position-y: 0%;
+                height: 0;
             }
         }
         .arrow {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 10%;
             width: 0;
             height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 10px solid #fff;
-            animation: arrowAnimation 2s infinite;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            animation: arrowAnimation 3s infinite;
+        }
+        .arrow-up {
+            border-bottom: 15px solid #00FF00;
+        }
+        .arrow-down {
+            border-top: 15px solid #FF0000;
         }
         @keyframes arrowAnimation {
-            0% {
-                bottom: 0;
-                opacity: 1;
+            0%, 100% {
+                transform: translateY(0);
             }
             50% {
-                bottom: 50%;
-                opacity: 0.5;
-            }
-            100% {
-                bottom: 100%;
-                opacity: 0;
+                transform: translateY(-20px);
             }
         }
         .container {
@@ -131,20 +98,15 @@
 </head>
 <body>
     <div class="background">
-        <div class="volume-bar" style="left: 10%;"></div>
-        <div class="volume-bar" style="left: 30%;"></div>
-        <div class="volume-bar" style="left: 50%;"></div>
-        <div class="volume-bar" style="left: 70%;"></div>
-        <div class="volume-bar" style="left: 90%;"></div>
-        
-        <div class="candle" style="left: 15%;"></div>
-        <div class="candle" style="left: 35%;"></div>
-        <div class="candle" style="left: 55%;"></div>
-        <div class="candle" style="left: 75%;"></div>
-        <div class="candle" style="left: 95%;"></div>
-
-        <div class="line-chart"></div>
-        <div class="arrow"></div>
+        <div class="candle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="candle" style="left: 30%; animation-delay: 0.5s;"></div>
+        <div class="candle" style="left: 50%; animation-delay: 1s;"></div>
+        <div class="candle" style="left: 70%; animation-delay: 1.5s;"></div>
+        <div class="candle" style="left: 90%; animation-delay: 2s;"></div>
+        <div class="arrow arrow-up" style="left: 25%; animation-delay: 0.25s;"></div>
+        <div class="arrow arrow-down" style="left: 45%; animation-delay: 0.75s;"></div>
+        <div class="arrow arrow-up" style="left: 65%; animation-delay: 1.25s;"></div>
+        <div class="arrow arrow-down" style="left: 85%; animation-delay: 1.75s;"></div>
     </div>
     <div class="container">
         <div class="title">Welcome to Cutting Edge Web Page</div>
