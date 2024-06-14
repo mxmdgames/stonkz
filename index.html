@@ -1,141 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cutting Edge Web Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Stock Matrix</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
             overflow: hidden;
-            background: #000000;
-            color: #ffffff;
-            position: relative;
+            background-color: black;
+            color: #33ff33;
+            font-family: monospace;
         }
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .matrix {
+
+        .stream {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            font-size: 10px;
-            line-height: 10px;
             pointer-events: none;
+            user-select: none;
+            opacity: 0.8;
         }
-        .matrix__ticker {
-            position: absolute;
-            color: #33ff00;
-            opacity: 0.5;
-            animation: tickerAnimation 30s linear infinite;
+
+        .stream:nth-child(1) {
+            animation: animate 10s linear infinite;
         }
-        @keyframes tickerAnimation {
+
+        .stream:nth-child(2) {
+            animation: animate 10s linear infinite;
+            animation-delay: 1s;
+        }
+
+        .stream:nth-child(3) {
+            animation: animate 10s linear infinite;
+            animation-delay: 2s;
+        }
+
+        .stream:nth-child(4) {
+            animation: animate 10s linear infinite;
+            animation-delay: 3s;
+        }
+
+        .stream:nth-child(5) {
+            animation: animate 10s linear infinite;
+            animation-delay: 4s;
+        }
+
+        .stream:nth-child(6) {
+            animation: animate 10s linear infinite;
+            animation-delay: 5s;
+        }
+
+        .stream:nth-child(7) {
+            animation: animate 10s linear infinite;
+            animation-delay: 6s;
+        }
+
+        .stream:nth-child(8) {
+            animation: animate 10s linear infinite;
+            animation-delay: 7s;
+        }
+
+        .stream:nth-child(9) {
+            animation: animate 10s linear infinite;
+            animation-delay: 8s;
+        }
+
+        .stream:nth-child(10) {
+            animation: animate 10s linear infinite;
+            animation-delay: 9s;
+        }
+
+        @keyframes animate {
             0% {
-                transform: translateY(-100%);
+                transform: translateY(0);
             }
             100% {
-                transform: translateY(100vh);
-            }
-        }
-        .container {
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-        }
-        .title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            color: #f0f0f0;
-        }
-        .btn {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background-color: #4CAF50;
-            color: #f0f0f0;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-        .btn i {
-            margin-right: 10px;
-        }
-        .stock-chart {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: linear-gradient(to bottom, #001f4d, #001f4d 50%, #00001a 50%, #00001a);
-            animation: stockChartAnimation 15s infinite alternate;
-        }
-        .volume-chart {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 10%;
-            background: linear-gradient(to bottom, #000000, #000000 50%, #001f4d 50%, #001f4d);
-            animation: volumeChartAnimation 12s infinite alternate;
-        }
-        @keyframes stockChartAnimation {
-            0% {
-                height: 40%;
-            }
-            100% {
-                height: 50%;
-            }
-        }
-        @keyframes volumeChartAnimation {
-            0% {
-                height: 10%;
-            }
-            100% {
-                height: 20%;
+                transform: translateY(-100vh);
             }
         }
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="matrix">
-            <div class="matrix__ticker" style="top: 10%; left: 10%;">AAPL</div>
-            <div class="matrix__ticker" style="top: 20%; left: 20%;">GOOGL</div>
-            <div class="matrix__ticker" style="top: 30%; left: 30%;">MSFT</div>
-            <div class="matrix__ticker" style="top: 40%; left: 40%;">AMZN</div>
-            <div class="matrix__ticker" style="top: 50%; left: 50%;">TSLA</div>
-            <!-- Add more tickers as needed -->
-        </div>
-        <div class="stock-chart"></div>
-        <div class="volume-chart"></div>
-    </div>
-    <div class="container">
-        <div class="title">Welcome to Cutting Edge Web Page</div>
-        <button class="btn" onclick="openStreamlitApp()"><i class="fas fa-chart-line"></i> Go to Stock Charting App</button>
-    </div>
-
     <script>
-        function openStreamlitApp() {
-            window.open('https://stonkape.streamlit.app/', '_blank');
+        // Function to fetch stock price from Yahoo Finance
+        function fetchStockPrice(symbol) {
+            fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the latest price from the response
+                    const latestPrice = data.chart.result[0].meta.regularMarketPrice;
+                    // Create a new div element to display the stock price
+                    const stockElement = document.createElement('div');
+                    stockElement.className = 'stream';
+                    stockElement.textContent = `${symbol} $${latestPrice.toFixed(2)}`;
+                    document.body.appendChild(stockElement);
+                })
+                .catch(error => console.error('Error fetching stock price:', error));
         }
+
+        // Define an array of stock symbols
+        const stocks = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'FB', 'NVDA', 'NFLX', 'BTC-USD', 'ETH-USD'];
+
+        // Fetch live stock prices for each symbol
+        stocks.forEach(symbol => fetchStockPrice(symbol));
     </script>
 </body>
 </html>
