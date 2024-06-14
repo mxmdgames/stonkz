@@ -1,32 +1,28 @@
-const waterRipple = document.getElementById('water-ripple');
+<script>
+// ASCII text to animate
+const asciiText = "STONKAPE";
+// Get the element that will contain the ASCII text
+const asciiContainer = document.querySelector('.ascii-animation');
 
-// Replace with your desired water ripple characters
-const rippleChars = ['~', '-', '\\', '|', '/', '~'];
-
-let rippleX = Math.floor(waterRipple.clientWidth / 2);
-let rippleY = Math.floor(waterRipple.clientHeight / 2);
-let rippleRadius = 0;
-let rippleInterval;
-
-function generateRipple() {
-  waterRipple.textContent = '';
-  for (let y = 0; y < waterRipple.clientHeight; y++) {
-    let row = '';
-    for (let x = 0; x < waterRipple.clientWidth; x++) {
-      const distance = Math.sqrt(Math.pow(x - rippleX, 2) + Math.pow(y - rippleY, 2));
-      if (distance <= rippleRadius) {
-        const charIndex = Math.floor(distance / rippleRadius * (rippleChars.length - 1));
-        row += rippleChars[charIndex];
-      } else {
-        row += ' ';
-      }
-    }
-    waterRipple.textContent += row + '\n';
+// Function to generate a frame of the animation
+function animateAscii(frame) {
+  let output = '';
+  // Generate each line of the frame
+  for (let i = 0; i < asciiText.length; i++) {
+    // Calculate the offset for this character
+    const offset = Math.sin((frame + i) / 10) * 5;
+    // Generate spaces to create the offset
+    const spaces = ' '.repeat(Math.abs(offset));
+    // Add the character with the offset to the output
+    output += spaces + asciiText[i] + '\n';
   }
-  rippleRadius++;
-  if (rippleRadius >= Math.min(waterRipple.clientWidth, waterRipple.clientHeight) / 2) {
-    clearInterval(rippleInterval);
-  }
+  // Update the container with the new frame
+  asciiContainer.textContent = output;
 }
 
-rippleInterval = setInterval(generateRipple, 50); // Adjust speed as needed
+// Start the animation
+let frame = 0;
+setInterval(() => {
+  animateAscii(frame++);
+}, 100); // Update every 100ms
+</script>
