@@ -6,42 +6,62 @@
 <title>Matrix ASCII Art Stock Ticker</title>
 <style>
   @keyframes matrixRain {
-    0% { color: #0f0; opacity: 1; }
-    100% { color: #0f0; opacity: 0; }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
   }
   body {
     background-color: black;
     font-family: 'Courier New', monospace;
     overflow: hidden;
     color: #0f0;
+    margin: 0;
+    height: 100vh;
   }
   .matrix-rain {
     font-size: 16px;
     line-height: 16px;
+    white-space: nowrap;
     position: absolute;
     top: -100%;
-    animation: matrixRain 2s infinite linear;
+    animation: matrixRain linear infinite;
+  }
+  .button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 20px;
+    color: #0f0;
+    background-color: transparent;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 1000;
+  }
+  .button:hover {
+    background-color: #0f0;
+    color: black;
   }
 </style>
 </head>
 <body>
 
-<div class="matrix-rain">
-  GME $250.00<br>
-  $TSLA $650.00<br>
-  Roaring Kitty<br>
-  DeepFuckingValue<br>
-  // Add more stock tickers here
-</div>
+<!-- Multiple matrix-rain divs for the rain effect -->
+<div class="matrix-rain">GME $250.00<br>Roaring Kitty<br>DeepFuckingValue</div>
+<div class="matrix-rain">AAPL $150.00<br>Buy the dip<br>HODL!</div>
+<!-- Add more divs as needed -->
+
+<a href="your-backend-url-here" class="button">Access Chart</a>
 
 <script>
   // JavaScript to randomly position and animate the ASCII art
-  const rain = document.querySelector('.matrix-rain');
-  function animateRain() {
+  const rains = document.querySelectorAll('.matrix-rain');
+  rains.forEach(rain => {
     rain.style.left = Math.random() * window.innerWidth + 'px';
-    rain.style.top = -Math.random() * 500 + 'px';
-  }
-  setInterval(animateRain, 2000);
+    rain.style.animationDuration = Math.random() * 5 + 3 + 's'; // Random duration between 3s and 8s
+  });
 </script>
 
 </body>
