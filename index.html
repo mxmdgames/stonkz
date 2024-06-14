@@ -13,6 +13,7 @@
             overflow: hidden;
             background: #000000;
             color: #ffffff;
+            position: relative;
         }
         .background {
             position: fixed;
@@ -34,7 +35,6 @@
         }
         .matrix__ticker {
             position: absolute;
-            left: 0;
             color: #33ff00;
             opacity: 0.5;
             animation: tickerAnimation 30s linear infinite;
@@ -78,17 +78,54 @@
         .btn i {
             margin-right: 10px;
         }
+        .stock-chart {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to bottom, #001f4d, #001f4d 50%, #00001a 50%, #00001a);
+            animation: stockChartAnimation 15s infinite alternate;
+        }
+        .volume-chart {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10%;
+            background: linear-gradient(to bottom, #000000, #000000 50%, #001f4d 50%, #001f4d);
+            animation: volumeChartAnimation 12s infinite alternate;
+        }
+        @keyframes stockChartAnimation {
+            0% {
+                height: 40%;
+            }
+            100% {
+                height: 50%;
+            }
+        }
+        @keyframes volumeChartAnimation {
+            0% {
+                height: 10%;
+            }
+            100% {
+                height: 20%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="background">
         <div class="matrix">
-            <div class="matrix__ticker">AAPL</div>
-            <div class="matrix__ticker">GOOGL</div>
-            <div class="matrix__ticker">MSFT</div>
-            <div class="matrix__ticker">AMZN</div>
+            <div class="matrix__ticker" style="top: 10%; left: 10%;">AAPL</div>
+            <div class="matrix__ticker" style="top: 20%; left: 20%;">GOOGL</div>
+            <div class="matrix__ticker" style="top: 30%; left: 30%;">MSFT</div>
+            <div class="matrix__ticker" style="top: 40%; left: 40%;">AMZN</div>
+            <div class="matrix__ticker" style="top: 50%; left: 50%;">TSLA</div>
             <!-- Add more tickers as needed -->
         </div>
+        <div class="stock-chart"></div>
+        <div class="volume-chart"></div>
     </div>
     <div class="container">
         <div class="title">Welcome to Cutting Edge Web Page</div>
