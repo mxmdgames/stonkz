@@ -81,27 +81,39 @@
 </head>
 <body>
     <script>
-        // Function to fetch stock price from Yahoo Finance
-        function fetchStockPrice(symbol) {
+        function fetchStockData(symbol, element) {
             fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Extract the latest price from the response
-                    const latestPrice = data.chart.result[0].meta.regularMarketPrice;
-                    // Create a new div element to display the stock price
-                    const stockElement = document.createElement('div');
-                    stockElement.className = 'stream';
-                    stockElement.textContent = `${symbol} $${latestPrice.toFixed(2)}`;
-                    document.body.appendChild(stockElement);
+                    const price = data.chart.result[0].meta.regularMarketPrice.toFixed(2);
+                    element.innerText = `${symbol.toUpperCase()} $${price}`;
                 })
-                .catch(error => console.error('Error fetching stock price:', error));
+                .catch(error => {
+                    console.error('Error fetching stock data:', error);
+                });
         }
 
-        // Define an array of stock symbols
-        const stocks = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'FB', 'NVDA', 'NFLX', 'BTC-USD', 'ETH-USD'];
+        function updateStockPrices() {
+            const symbols = ['aapl', 'googl', 'msft', 'amzn', 'tsla', 'fb', 'nvda', 'nflx', 'btc-usd', 'eth-usd'];
+            const streams = document.querySelectorAll('.stream');
 
-        // Fetch live stock prices for each symbol
-        stocks.forEach(symbol => fetchStockPrice(symbol));
+            symbols.forEach((symbol, index) => {
+                fetchStockData(symbol, streams[index]);
+            });
+        }
+
+        updateStockPrices();
+        setInterval(updateStockPrices, 5000); // Update every 5 seconds
     </script>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
+    <div class="stream"></div>
 </body>
 </html>
