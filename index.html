@@ -6,8 +6,8 @@
 <title>Matrix ASCII Art Stock Ticker</title>
 <style>
   @keyframes matrixRain {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(100vh); }
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
   }
   body {
     background-color: black;
@@ -16,6 +16,7 @@
     color: #0f0;
     margin: 0;
     height: 100vh;
+    width: 100vw;
   }
   .matrix-rain {
     font-size: 16px;
@@ -26,7 +27,7 @@
     animation: matrixRain linear infinite;
   }
   .button {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -48,21 +49,35 @@
 </head>
 <body>
 
-<!-- Multiple matrix-rain divs for the rain effect -->
-<div class="matrix-rain">GME $250.00<br>Roaring Kitty<br>DeepFuckingValue</div>
-<div class="matrix-rain">AAPL $150.00<br>Buy the dip<br>HODL!</div>
-<!-- Add more divs as needed -->
+<!-- JavaScript generated matrix-rain divs for the rain effect -->
+<script>
+  // JavaScript to create multiple matrix-rain divs
+  const stockPhrases = [
+    'GME $250.00', 'Roaring Kitty', 'DeepFuckingValue',
+    'AAPL $150.00', 'Buy the dip', 'HODL!',
+    // Add more stock tickers and phrases here
+  ];
+
+  for (let i = 0; i < 50; i++) { // Increase the number for more rain
+    const rainDiv = document.createElement('div');
+    rainDiv.classList.add('matrix-rain');
+    rainDiv.textContent = stockPhrases[Math.floor(Math.random() * stockPhrases.length)];
+    document.body.appendChild(rainDiv);
+  }
+
+  // Function to animate the matrix rain
+  function animateRain() {
+    const rains = document.querySelectorAll('.matrix-rain');
+    rains.forEach(rain => {
+      rain.style.left = Math.random() * window.innerWidth + 'px';
+      rain.style.animationDuration = Math.random() * 5 + 3 + 's'; // Random duration between 3s and 8s
+      rain.style.animationDelay = '-' + Math.random() * 5 + 's'; // Random delay to stagger the animation
+    });
+  }
+  animateRain();
+</script>
 
 <a href="your-backend-url-here" class="button">Access Chart</a>
-
-<script>
-  // JavaScript to randomly position and animate the ASCII art
-  const rains = document.querySelectorAll('.matrix-rain');
-  rains.forEach(rain => {
-    rain.style.left = Math.random() * window.innerWidth + 'px';
-    rain.style.animationDuration = Math.random() * 5 + 3 + 's'; // Random duration between 3s and 8s
-  });
-</script>
 
 </body>
 </html>
