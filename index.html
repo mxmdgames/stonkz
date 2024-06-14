@@ -1,83 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matrix ASCII Art Stock Ticker</title>
-<style>
-  @keyframes matrixRain {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
-  body {
-    background-color: black;
-    font-family: 'Courier New', monospace;
-    overflow: hidden;
-    color: #0f0;
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
-  }
-  .matrix-rain {
-    font-size: 16px;
-    line-height: 16px;
-    white-space: nowrap;
-    position: absolute;
-    top: -100%;
-    animation: matrixRain linear infinite;
-  }
-  .button {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 30px;
-    font-size: 20px;
-    color: #0f0;
-    background-color: transparent;
-    border: 2px solid #0f0;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    z-index: 1000;
-  }
-  .button:hover {
-    background-color: #0f0;
-    color: black;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Stock Charting</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- JavaScript generated matrix-rain divs for the rain effect -->
-<script>
-  // JavaScript to create multiple matrix-rain divs
-  const stockPhrases = [
-    'GME $250.00', 'Roaring Kitty', 'DeepFuckingValue',
-    'AAPL $150.00', 'Buy the dip', 'HODL!',
-    // Add more stock tickers and phrases here
-  ];
-
-  for (let i = 0; i < 50; i++) { // Increase the number for more rain
-    const rainDiv = document.createElement('div');
-    rainDiv.classList.add('matrix-rain');
-    rainDiv.textContent = stockPhrases[Math.floor(Math.random() * stockPhrases.length)];
-    document.body.appendChild(rainDiv);
-  }
-
-  // Function to animate the matrix rain
-  function animateRain() {
-    const rains = document.querySelectorAll('.matrix-rain');
-    rains.forEach(rain => {
-      rain.style.left = Math.random() * window.innerWidth + 'px';
-      rain.style.animationDuration = Math.random() * 5 + 3 + 's'; // Random duration between 3s and 8s
-      rain.style.animationDelay = '-' + Math.random() * 5 + 's'; // Random delay to stagger the animation
-    });
-  }
-  animateRain();
-</script>
-
-<a href="your-backend-url-here" class="button">Access Chart</a>
-
-</body>
-</html>
+  <header>
+    <h1>Decode the Market Matrix</h1>
+    <p>Unleash the power of data visualization with our revolutionary stock charting platform.</p>
+  </header>
+  <section class="hero">
+    <div class="matrix-code">
+      <span class="green">0</span>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>1</span>
+      <br>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>1</span>
+      <span>1</span>
+      <span>0</span>
+      <span class="green">0</span>
+      <span>1</span>
+      <span>0</span>
+      <br>
+      <span class="green">0</span>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>0</span>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>0</span>
+      <span>1</span>
+      <br>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>1</span>
+      <br>
+      <span>1</span>
+      <span>0</span>
+      <span class="green">1</span>
+      <span>0</span>
+      <span>1</span>
+      <span class="green">0</span>
+      <span>1</span>
+      <span>0</span>
+    </div>
+    <div class="hero-text">
+      <h2>See Beyond the Numbers</h2>
+      <p>Our interactive charts transform complex financial data into a visual masterpiece, empowering you to make informed trading decisions.</p>
+      <a href="#" class="cta">Start Your Free Trial</a>
+    </div>
+  </section>
+  <section class="features">
+    <h3>Advanced Charting Features</h3>
+    <div class="feature-card">
+      <img src="chart-types.svg" alt="Chart Types Icon">
+      <h4>Multiple Chart Types</h4>
+      <p>Choose from a wide range of chart types, including line charts, candlesticks, and more, to visualize data the way you want.</p>
+    </div>
+    <div class="feature-card">
+      <img src="technical-indicators.svg" alt="Technical Indicators Icon">
+      <h4>Technical Indicators</h4>
+      <p>Gain valuable insights with a comprehensive suite of technical indicators that help you identify trends and make predictions.</p>
+    </div>
+    <div class="feature-card">
+      <img src="customization.svg" alt="Customization Icon">
+      <p>Customize your charts with ease. Select indicators, adjust timeframes, and apply drawing tools to personalize your trading experience.</p>
+    </div>
+  </section>
+  <section class="benefits">
+    <h2>Unlock the Advantages</h2>
+    <div class="benefit-card">
+      <img src="better-decisions.svg" alt="Better Decisions Icon">
+      <h3>Make Smarter Decisions</h3>
+      <p>Our intuitive charts empower you to analyze market trends and identify trading opportunities with greater clarity.</p>
+    </div>
+    <div class="benefit-card">
+      <img src="increased-confidence.svg" alt="Increased Confidence Icon">
+      <h3>Trade with Confidence</h3>
+      <p>Gain a deeper understanding of the market with data visualization, leading to more confident and informed trading decisions.</p>
+    </div>
+    <div class="benefit-card">
+      <img src="improved-efficiency.svg" alt
