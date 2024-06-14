@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Stock Charting</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StonkApe - Stock Market Insights</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('stock-market-bg.jpg'); /* Replace with your stock market themed background */
+    background-size: cover;
+  }
+  .container {
+    text-align: center;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+  }
+  .ascii-animation {
+    font-family: 'Courier New', monospace;
+    white-space: pre;
+    display: inline-block;
+    animation: ripple 5s infinite;
+    font-size: 14px;
+  }
+  @keyframes ripple {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <pre id="water-ripple"></pre>
-    <a href="https://stonkape.streamlit.app" class="cta-award">Unlock the Matrix. Start Your Free Trial.</a>
+<div class="container">
+  <h1>Welcome to StonkApe</h1>
+  <p>Your gateway to the stock market jungle</p>
+  <div class="ascii-animation">
+    <!-- Your ASCII art goes here -->
+    STONKAPE
   </div>
-
-  <script src="script.js"></script>
-  <style>
-    /* Styles in style.css */
-  </style>
+</div>
+<script>
+  // JavaScript for ASCII animation goes here
+</script>
 </body>
 </html>
