@@ -9,6 +9,59 @@
       padding: 0; margin: 0;
     }
 css
+	  body {
+  min-height:100vh;
+  display:grid;
+  justify-content:center;
+  align-content:center;
+  perspective:1000px;
+  perspective-origin:center top;
+  transform-style:preserve-3d;
+  overflow:hidden;
+}
+
+a.circle {
+  width:50vmin;
+  height:50vmin;
+  transform-style:preserve-3d;
+  position:relative;
+  
+  &:before, &:after {
+    content:'';
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:center/cover url(https://images.unsplash.com/photo-1486736065690-45e0655d038a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80);  
+  }
+  
+  &:before {
+    animation:f 4s both;
+    @keyframes f {
+      from {clip-path:inset(0 80% 0 0);}
+      50%, to {clip-path:inset(0 0% 0 0);}
+    }  
+  }
+  
+  &:after {
+    filter:brightness(0.2);
+    transform:rotateY(-180deg);
+    animation:g 4s both;
+    @keyframes g {
+      from {clip-path:inset(0 0 0 20%);transform-origin:20% 0;}
+      50%, to {clip-path:inset(0 0 0 100%);transform-origin:100% 0;}
+    }
+  }
+  
+  animation:h 1s both;
+  transform-origin:center bottom;
+  @keyframes h {
+    from {transform:rotate(-50deg)}
+    to {transform:rotate(-40deg)}
+  }
+}
+
 html, body {
 	padding: 0; margin: 0;
 }
@@ -754,5 +807,6 @@ body {
 	</defs>
 </svg>
   <a href="https://stonkape.streamlit.app/" class="btn">HACK THE MARKET</a>
+	a.circle
 </body>
 </html>
