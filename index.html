@@ -1,78 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StonkApe - Stock Market Insights</title>
-<style>
-  /* CSS styles */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f3f3f3;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('https://ibb.co/JyZnPKd'); /* Replace with your stock market themed background */
-    background-size: cover;
-  }
-  .container {
-    text-align: center;
-    padding: 50px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-  }
-  .ascii-animation {
-    font-family: 'Courier New', monospace;
-    white-space: pre;
-    display: inline-block;
-    animation: ripple 5s infinite;
-    font-size: 14px;
-  }
-  @keyframes ripple {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(20px); }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hack the Market - Secure and Anonymized Trading</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;1,500&display=swap");
+
+    $black: #000000;
+    $darkGreen: #004d00;
+    $green: #00ff00;
+    $lightGreen: #99ff99;
+
+    body {
+      background: linear-gradient($black, $darkGreen);
+      height: 100vh;
+      font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+      font-family: "DM Mono", monospace;
+      font-weight: 300;
+      overflow: hidden;
+      color: $green;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    .main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -3;
+      }
+      &:before {
+        right: 0;
+        bottom: -19;
+        height: 30em;
+        width: 30em;
+        border-radius: 30em;
+        background: linear-gradient($black, $darkGreen);
+        align-self: flex-end;
+        animation: gradient-fade 8s ease-in-out 3s infinite alternate;
+      }
+      &:after {
+        $circle-unit: 10em;
+        top: 0;
+        left: 30;
+        height: $circle-unit;
+        width: $circle-unit;
+        border-radius: $circle-unit;
+        background: linear-gradient($black, $darkGreen);
+        animation: gradient-fade-alt 6s ease-in-out 3s infinite alternate;
+      }
+
+      &__text-wrapper {
+        position: relative;
+        padding: 2em;
+
+        &:before,
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+        }
+
+        &:before {
+          $circle-unit: 13em;
+          z-index: -1;
+          top: -3em;
+          right: -3em;
+          width: $circle-unit;
+          height: $circle-unit;
+          opacity: 0.7;
+          border-radius: $circle-unit;
+          background: linear-gradient($green, $darkGreen);
+          animation: rotation 7s linear infinite;
+        }
+
+        &:after {
+          $circle-unit: 20em;
+          z-index: -1;
+          bottom: -#{$circle-unit};
+          width: $circle-unit;
+          height: $circle-unit;
+          border-radius: $circle-unit;
+          background: linear-gradient($lightGreen, $darkGreen);
+          animation: rotation 7s linear infinite;
+        }
+      }
+    }
+
+    .arrow {
+      z-index: 1000;
+      opacity: 0.5;
+      position: absolute;
+
+      &--top {
+        top: 0;
+        left: -5em;
+      }
+
+      &--bottom {
+        bottom: 0;
+        right: 3em;
+      }
+    }
+
+    .circle {
+      transform: translate(50%, -50%) rotate(0deg);
+      transform-origin: center;
+
+      &--green {
+        $circle-unit: 20em;
+        height: $circle-unit;
+        width: $circle-unit;
+        border-radius: $circle-unit;
+        background: linear-gradient($green, $darkGreen);
+      }
+    }
+
+    .backdrop {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      background-color: pink;
+    }
+
+    .dotted-circle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0.3;
+      animation: rotation 38s linear infinite;
+    }
+
+    .link-button {
+      display: inline-block;
+      padding: 1em 2em;
+      margin-top: 2em;
+      font-size: 1.5em;
+      font-weight: 500;
+      color: $black;
+      background-color: $green;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .link-button:hover {
+      background-color: $lightGreen;
+    }
+
+    // animations
+    .draw-in {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 10;
+      animation: draw 15s ease-in-out alternate infinite;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: 1000;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .item-to {
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      transform-origin: bottom;
+    }
+
+    .bounce-1 {
+      animation-name: bounce-1;
+      animation-timing-function: ease;
+    }
+
+    .bounce-2 {
+      animation-name: bounce-2;
+      animation-timing-function: ease;
+    }
+
+    .bounce-3 {
+      animation-name: bounce-3;
+      animation-timing-function: ease;
+    }
+
+    @keyframes bounce-1 {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(50px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce-2 {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce-3 {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(30px);
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    // gradient fade
+
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes gradient-fade {
+      from {
+        transform: translate(10%, -10%) rotate(0deg);
+      }
+      to {
+        transform: translate(50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes gradient-fade-alt {
+      from {
+        transform: translate(-20%, 20%) rotate(0deg);
+      }
+      to {
+        transform: translate(-60%, 60%) rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <h1>Welcome to StonkApe</h1>
-  <p>Your gateway to the stock market jungle</p>
-  <div class="ascii-animation">
-    <!-- ASCII art will be animated here -->
-    STONKAPE
+  <div class="arrow arrow--top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="270.11" height="649.9" overflow="visible">
+      <style>
+        .geo-arrow {
+          fill: none;
+          stroke: #00ff00;
+          stroke-width: 2;
+          stroke-miterlimit: 10
+        }
+      </style>
+      <g class="item-to bounce-1">
+        <path class="geo-arrow draw-in" d="M135.06 142.564L267.995 275.5 135.06 408.434 2.125 275.499z" />
+      </g>
+      <circle class="geo-arrow item-to bounce-2" cx="194.65" cy="69.54" r="7.96" />
+      <circle class="geo-arrow draw-in" cx="194.65" cy="39.5" r="7.96" />
+      <circle class="geo-arrow item-to bounce-3" cx="194.65" cy="9.46" r="7.96" />
+      <g class="geo-arrow item-to bounce-2">
+        <path class="st0 draw-in" d="M181.21 619.5l13.27 27 13.27-27zM194.48 644.5v-552" />
+      </g>
+    </svg>
   </div>
-</div>
-<script>
-// ASCII text to animate
-const asciiText = "";
-// Get the element that will contain the ASCII text
-const asciiContainer = document.querySelector('.ascii-animation');
-
-// Function to generate a frame of the animation
-function animateAscii(frame) {
-  let output = '';
-  // Generate each line of the frame
-  for (let i = 0; i < asciiText.length; i++) {
-    // Calculate the offset for this character
-    const offset = Math.sin((frame + i) / 10) * 5;
-    // Generate spaces to create the offset
-    const spaces = ' '.repeat(Math.abs(offset));
-    // Add the character with the offset to the output
-    output += spaces + asciiText[i] + '\\n';
-  }
-  // Update the container with the new frame
-  asciiContainer.textContent = output;
-}
-
-// Start the animation
-let frame = 0;
-setInterval(() => {
-  animateAscii(frame++);
-}, 100); // Update every 100ms
-</script>
+  <div class="arrow arrow--bottom">
+    <svg xmlns="http://www.w3.org/2000/svg" width="31.35" height="649.9" overflow="visible">
+      <style>
+        .geo-arrow {
+          fill: none;
+          stroke: #00ff00;
+          stroke-width: 2;
+          stroke-miterlimit: 10
+        }
+      </style>
+      <g class="item-to bounce-1">
+        <circle class="geo-arrow item-to bounce-3" cx="15.5" cy="580.36" r="7.96" />
+        <circle class="geo-arrow draw-in" cx="15.5" cy="610.4" r="7.96" />
+        <circle class="geo-arrow item-to bounce-2" cx="15.5" cy="640.44" r="7.96" />
+        <g class="item-to bounce-2">
+          <path class="geo-arrow draw-in" d="M28.94 30.4l-13.26-27-13.27 27zM15.68 5.4v552" />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="main">
+    <div class="main__text-wrapper">
+      <h1 class="main__title">Hack the Market</h1>
+      <h2>Secure and Anonymized Trading</h2>
+      <a href="https://stonkape.streamlit.app/" class="link-button">Start Trading</a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="dotted-circle" width="352" height="352" overflow="visible">
+        <circle cx="176" cy="176" r="174" fill="none" stroke="#00ff00" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="12.921,11.9271"/>
+      </svg>
+    </div>
+  </div>
 </body>
 </html>
