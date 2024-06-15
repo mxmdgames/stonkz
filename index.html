@@ -1,148 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Eye</title>
-    <style>
-        html, body {
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            position: relative;
-            width: 100vw;
-            min-width: 800px;
-            height: 100vh;
-            min-height: 600px;
-            background: linear-gradient(-45deg, #8691b3, #edeef3);
-        }
-
-        body * {
-            box-sizing: border-box;
-        }
-
-        body *,
-        body *:before,
-        body *:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-        }
-
-        .eye {
-            width: 332px;
-            height: 332px;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background: #EBEDF3;
-            filter: blur(5px);
-            animation: eyeAnimation 4s cubic-bezier(1, 0, 1, 1) infinite;
-        }
-
-        @keyframes eyeAnimation {
-            0%, 33%, 100% {
-                box-shadow: inset -8px -13px 20px -10px rgba(230, 230, 236, 0.04), 64px 55px 40px -40px #38406A, 20px 18px 30px -10px #38406A, inset -70px -50px 60px -30px #4b6398, inset -90px -90px 70px -90px #697398, inset -70px -50px 100px -40px #697398, inset 80px 50px 80px -50px #eeeef3, -25px -15px 50px -10px #F6F6FB, 14px -1px 50px -10px #7e7ea9, 1px 9px 50px -10px #7e7ea9, inset -90px 40px 60px -20px rgba(116, 66, 255, 0.1), inset -90px -120px 60px -20px rgba(116, 66, 255, 0.1);
-                transform: translate(-50%, -50%) scale(1.25);
-            }
-            65% {
-                box-shadow: inset -8px -13px 60px -10px rgba(230, 230, 236, 0.2), 44px 35px 20px -20px #687294, 11px 9px 9px -4px #6e799d, inset -100px -70px 40px -110px #6A789C, inset -90px -90px 70px -90px #697398, inset -70px -50px 100px -40px #697398, inset 80px 50px 80px -50px #eeeef3, -25px -15px 30px -10px #F6F6FB;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
-
-        .eye::after {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
-            animation: pupilAnimationSize 4s cubic-bezier(1, 0, 1, 1) infinite, pupilAnimationView 4s ease infinite;
-        }
-
-        @keyframes pupilAnimationSize {
-            0%, 30%, 100% {
-                transform: translate(-50%, -50%) scale(0.85);
-            }
-            40%, 90% {
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-        }
-
-        @keyframes pupilAnimationView {
-            0%, 30%, 100% {
-                box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
-            }
-            60% {
-    box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 0.1);
-}
-}
-
-.eye::before {
-    width: 30px;
-    height: 30px;
-    background: #000;
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
-    transform: translate(-50%, -50%);
-}
-
-.eye::before,
-.eye::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-.eye::before {
-    animation: shine 4s infinite;
-}
-
-@keyframes shine {
-    0%, 20%, 100% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Eye with Link</title>
+  <style>
+    html, body {
+      padding: 0; margin: 0;
     }
-    30% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
+css
+Copy code
+body {
+  position: relative;
+  width: 100vw;
+  min-width: 800px;
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(-45deg, #8691b3, #edeef3);
+}
+
+body *, body *:before, body *:after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+}
+
+.eye {
+  width: 332px; height: 332px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #EBEDF3;
+  filter: blur(5px);
+  animation: eyeAnimation 4s cubic-bezier(1, 0, 1, 1) infinite;
+}
+@keyframes eyeAnimation {
+  0%, 33%, 100% {
+    box-shadow: inset -8px -13px 20px -10px rgba(230, 230, 236, 0.04), 64px 55px 40px -40px #38406A, 20px 18px 30px -10px #38406A, inset -70px -50px 60px -30px #4b6398, inset -90px -90px 70px -90px #697398, inset -70px -50px 100px -40px #697398, inset 80px 50px 80px -50px #eeeef3, -25px -15px 50px -10px #F6F6FB, 14px -1px 50px -10px #7e7ea9, 1px 9px 50px -10px #7e7ea9, inset -90px 40px 60px -20px rgba(116, 66, 255, 0.1), inset -90px -120px 60px -20px rgba(116, 66, 255, 0.1);
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+  65% {
+    box-shadow: inset -8px -13px 60px -10px rgba(230, 230, 236, 0.2), 44px 35px 20px -20px #687294, 11px 9px 9px -4px #6e799d, inset -100px -70px 40px -110px #6A789C, inset -90px -90px 70px -90px #697398, inset -70px -50px 100px -40px #697398, inset 80px 50px 80px -50px #eeeef3, -25px -15px 30px -10px #F6F6FB;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .eye::after {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
-    animation: pupilAnimationSize 4s cubic-bezier(1, 0, 1, 1) infinite, pupilAnimationView 4s ease infinite;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
+  animation: pupilAnimationSize 4s cubic-bezier(1, 0, 1, 1) infinite, pupilAnimationView 4s ease infinite;
 }
-
 @keyframes pupilAnimationSize {
-    0%, 30%, 100% {
-        transform: translate(-50%, -50%) scale(0.85);
-    }
-    40%, 90% {
-        transform: translate(-50%, -50%) scale(0.5);
-    }
+  0%, 30%, 100% { transform: translate(-50%, -50%) scale(0.85); }
+  40%, 90% { transform: translate(-50%, -50%) scale(0.5); }
 }
-
 @keyframes pupilAnimationView {
-    0%, 30%, 100% {
-        box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
-    }
-    60% {
-        box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 0.1);
-    }
+  0%, 30%, 100% {
+    box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
+  }
+  60%, 66% {
+    box-shadow: inset -50px -20px 30px 0px rgba(231, 226, 245, 0), inset 10px 10px 70px -27px rgba(47, 44, 76, 0), 0px 0px 10px 7px hsla(256, 49%, 92%, 0);
+  }
+  90% {
+    box-shadow: inset -50px -20px 30px 0px #e7e2f5, inset 100px 10px 20px -27px #2f2c4c, 0px 0px 10px 7px rgba(231, 226, 245, 1);
+  }
 }
 
-</style>
+.circle-1, .circle-2 {
+  width: 475px; height: 475px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-right-color: rgba(223, 228, 255, 0.6);
+}
+.circle-1 {
+  animation: circle1AnimationOpacity 4s ease infinite, circle1AnimationMove 4s ease infinite;
+}
+@keyframes circle1AnimationMove {
+  0%, 100% { transform: translate(-50%, -50%) rotate(49deg); }
+  7% { transform: translate(-50%, -50%) rotate(38deg); }
+  12%, 19%, 68% { transform: translate(-50%, -50%) rotate(42deg); }
+  26%, 30% { transform: translate(-50%, -50%) rotate(82deg); }
+  73% { transform: translate(-50%, -50%) rotate(34deg); }
+  87%, 92% { transform: translate(-50%, -50%) rotate(69deg); }
+  94% { transform: translate(-50%, -50%) rotate(65deg); }
+}
+@keyframes circle1AnimationOpacity {
+  0%, 27%, 73%, 100% { opacity: 1; }
+  30%, 70% { opacity: 0; }
+}
+.circle-2 {
+  animation: circle2AnimationOpacity 4s ease infinite, circle2AnimationMove 4s ease infinite;
+}
+@keyframes circle2AnimationMove {
+  0%, 100% { transform: translate(-50%, -50%) rotate(229deg); }
+  9% { transform: translate(-50%, -50%) rotate(220deg); }
+  14%, 21% { transform: translate(-50%, -50%) rotate(225deg); }
+  29%, 67% { transform: translate(-50%, -50%) rotate(262deg); }
+  82% { transform: translate(-50%, -50%) rotate(241deg); }
+  90%, 94% { transform: translate(-50%, -50%) rotate(249deg); }
+  99% { transform: translate(-50%, -50%) rotate(245deg); }
+}
+@keyframes circle2AnimationOpacity {
+  0%, 27%, 79%, 100% { opacity: 1; }
+  30%, 76% { opacity: 0; }
+}
+
+.circle-3 {
+  left: calc(50% + 93px);
+  top: calc(50% - 189px);
+  width: 106px; height: 280px;
+  overflow: hidden;
+}
+.circle-3::before {
+  left: -275%;
+  top: -4%;
+  width: 393px;
+  height: 393px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-right-color: rgba(223, 228, 255, 0.6);
+  animation: circle3Animation 4s ease infinite;
+}
+@keyframes circle3Animation {
+  0% { transform: rotate(-3deg); }
+  20% { transform: rotate(-107deg); }
+  79% { transform: rotate(-286deg); }
+  100% { transform: rotate(-364deg); }
+}
+
+.circle-4 {
+  width: 295px; height: 295px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-right-color: rgb(251, 251, 251);
+  border-left-color: rgba(251, 251, 251, 0.2);
+  animation: circle4AnimationMove 4s cubic-bezier(1, 0, 1, 1) infinite, circle4AnimationOpacity 4s ease infinite;
+}
+@keyframes circle4AnimationMove {
+  0%, 100% { transform: translate(-50%, -50%) rotate(91deg); }
+  14%, 25%, 85% { transform: translate(-50%, -50%) rotate(85deg); }
+  58%, 70% { transform: translate(-50%, -50%) rotate(86deg); }
+}
+@keyframes circle4AnimationOpacity {
+  0%, 20%, 25%, 50%, 80%, 85%, 100% { opacity: 1; }
+  21%, 49%, 81% { opacity: 0; }
+}
+
+.btn {
+  top: calc(100% - 75px);
+  left: 50%;
+  width: 200px; height: 50px;
+  background: #38406A;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+}
+
+.btn:hover {
+  background: #2f2c4c;
+}
+  </style>
 </head>
 <body>
-    <div class="eye"></div>
-	  <!-- Link button -->
+  <div class="eye"></div>
+  <div class="circle-1"></div>
+  <div class="circle-2"></div>
+  <div class="circle-3"></div>
+  <div class="circle-4"></div>
+	<div class="eye"></div>
+<div class="circle-1"></div>
+<div class="circle-2"></div>
+<div class="circle-3"></div>
+<div class="circle-4"></div>
+<div class="circle-5"></div>
+<div class="circle-6"></div>
+<div class="circle-7"></div>
+<div class="circle-8"></div>
+<div class="circle-9"></div>
+<div class="circle-10"></div>
+<div class="circle-11"></div>
+<div class="circle-12"></div>
+<div class="circle-13"></div>
+<div class="circle-14"></div>
+<div class="glitch"></div>
+<div class="fragment-1"></div>
+<div class="fragment-2"></div>
+<div class="fragment-3"></div>
+<svg width="190" height="190" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<clipPath id='bagel1'>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M95 190C147.467 190 190 147.467 190 95C190 42.533 147.467 0 95 0C42.533 0 0 42.533 0 95C0 147.467 42.533 190 95 190ZM95 120C108.807 120 120 108.807 120 95C120 81.1929 108.807 70 95 70C81.1929 70 70 81.1929 70 95C70 108.807 81.1929 120 95 120Z" />
+		</clipPath>
+		<clipPath id='bagel2'>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M71 142C110.212 142 142 110.212 142 71C142 31.7878 110.212 0 71 0C31.7878 0 0 31.7878 0 71C0 110.212 31.7878 142 71 142ZM71 139C108.555 139 139 108.555 139 71C139 33.4446 108.555 3 71 3C33.4446 3 3 33.4446 3 71C3 108.555 33.4446 139 71 139Z" />
+		</clipPath>
+		<clipPath id='bagel3'>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M60 120C93.1372 120 120 93.1372 120 60C120 26.8628 93.1372 0 60 0C26.8628 0 0 26.8628 0 60C0 93.1372 26.8628 120 60 120ZM60 115C90.3757 115 115 90.3757 115 60C115 29.6243 90.3757 5 60 5C29.6243 5 5 29.6243 5 60C5 90.3757 29.6243 115 60 115Z" />
+		</clipPath>
+		<clipPath id='bagel4'>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M38 76C58.9868 76 76 58.9868 76 38C76 17.0132 58.9868 0 38 0C17.0132 0 0 17.0132 0 38C0 58.9868 17.0132 76 38 76ZM38 72C56.7777 72 72 56.7776 72 38C72 19.2224 56.7777 4 38 4C19.2223 4 4 19.2224 4 38C4 56.7776 19.2223 72 38 72Z" />
+		</clipPath>
+	</defs>
+</svg>
   <a href="https://stonkape.streamlit.app/" class="btn">HACK THE MARKET</a>
 </body>
 </html>
-
