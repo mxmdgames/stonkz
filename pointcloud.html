@@ -57,7 +57,7 @@
     <button class="button" onclick="copyToClipboard('BTC Wallet: bc1qksg7dx3lly8szy0yamrrukl9ul9vwhvjzhcvfk')">BTC Wallet: YOUR_BTC_WALLET_ADDRESS</button>
     <button class="button" onclick="copyToClipboard('DOGE Wallet: DLQJN7GKFbUpZS2CgQsbcZtmXRqiCGVman')">DOGE Wallet: YOUR_DOGE_WALLET_ADDRESS</button>
     <button class="button" onclick="copyToClipboard('SOL Wallet: ArfmRhYy7PpfZs3bLsR685ZidyZjBkhfum7Cs3PzTuBF')">SOL Wallet: YOUR_SOL_WALLET_ADDRESS</button>
-  </div>
+   </div>
 
   <script>
     // Creating the canvas
@@ -79,10 +79,35 @@
       });
     }
 
+    // Generating random lines between points
+    const lines = [];
+    const numLines = 50;
+
+    for (let i = 0; i < numLines; i++) {
+      const start = Math.floor(Math.random() * points.length);
+      let end = Math.floor(Math.random() * points.length);
+      while (end === start) {
+        end = Math.floor(Math.random() * points.length);
+      }
+      lines.push({ start, end });
+    }
+
     // Animation function
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Draw lines between points
+      lines.forEach(line => {
+        const start = points[line.start];
+        const end = points[line.end];
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
+      });
+
+      // Draw points
       points.forEach(point => {
         point.x += point.vx;
         point.y += point.vy;
