@@ -19,15 +19,25 @@
       z-index: -1;
     }
 
-    .button {
+    .button-container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 5px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .button {
+      display: block;
+      margin-bottom: 10px;
       background-color: #ffffff;
       color: #000000;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 10px 20px;
+      font-size: 16px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -42,7 +52,12 @@
 </head>
 <body>
   <canvas id="canvas"></canvas>
-  <button class="button" onclick="window.location.href='0x5d59782aC869cB2eAc0139b9fcF4516E784fF2F5'">DonateETH$/Tip$ETH</button>
+  <div class="button-container">
+    <button class="button" onclick="copyToClipboard('ETH Wallet: 0x5d59782aC869cB2eAc0139b9fcF4516E784fF2F5')">ETH Wallet: YOUR_ETH_WALLET_ADDRESS</button>
+    <button class="button" onclick="copyToClipboard('BTC Wallet: bc1qksg7dx3lly8szy0yamrrukl9ul9vwhvjzhcvfk')">BTC Wallet: YOUR_BTC_WALLET_ADDRESS</button>
+    <button class="button" onclick="copyToClipboard('DOGE Wallet: DLQJN7GKFbUpZS2CgQsbcZtmXRqiCGVman')">DOGE Wallet: YOUR_DOGE_WALLET_ADDRESS</button>
+    <button class="button" onclick="copyToClipboard('SOL Wallet: ArfmRhYy7PpfZs3bLsR685ZidyZjBkhfum7Cs3PzTuBF')">SOL Wallet: YOUR_SOL_WALLET_ADDRESS</button>
+  </div>
 
   <script>
     // Creating the canvas
@@ -90,6 +105,17 @@
     }
 
     animate();
+
+    // Copy to clipboard function
+    function copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      alert('Copied to clipboard: ' + text);
+    }
   </script>
 </body>
 </html>
